@@ -1,4 +1,4 @@
-# Keycloak - Restrict email domain for registration
+# Keycloak - Whitelist email domain for registration
 
 This extension allows you to validate email domain used for registration in keycloak to accept only a finite list of domain.
 

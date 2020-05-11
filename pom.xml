@@ -10,7 +10,7 @@
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     <maven.compiler.source>1.8</maven.compiler.source>
     <maven.compiler.target>1.8</maven.compiler.target>
-    <keycloak.version>4.5.0.Final</keycloak.version>
+    <keycloak.version>10.0.1</keycloak.version>
   </properties>
   <dependencies>
     <dependency>

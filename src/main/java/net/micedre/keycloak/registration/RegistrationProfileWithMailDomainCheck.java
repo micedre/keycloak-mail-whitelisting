@@ -71,6 +71,14 @@ public class RegistrationProfileWithMailDomainCheck extends RegistrationProfile 
       AuthenticatorConfigModel mailDomainConfig = context.getAuthenticatorConfig();
       String eventError = Errors.INVALID_REGISTRATION;
 
+      if(email == null){
+         context.getEvent().detail(Details.EMAIL, email);
+         errors.add(new FormMessage(RegistrationPage.FIELD_EMAIL, Messages.INVALID_EMAIL));
+         context.error(eventError);
+         context.validationError(formData, errors);
+         return;
+      }
+
       String[] domains = mailDomainConfig.getConfig().getOrDefault("validDomains","exemple.org").split("##");
       for (String domain : domains) {
          if (email.endsWith(domain)) {
@@ -79,7 +87,6 @@ public class RegistrationProfileWithMailDomainCheck extends RegistrationProfile 
          }
       }
       if (!emailDomainValid) {
-         System.out.println("here");
          context.getEvent().detail(Details.EMAIL, email);
          errors.add(new FormMessage(RegistrationPage.FIELD_EMAIL, Messages.INVALID_EMAIL));
       }

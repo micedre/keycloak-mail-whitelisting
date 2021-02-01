@@ -2,6 +2,9 @@
 
 This extension allows you to validate email domain used for registration in keycloak to accept only a finite list of domain.
 
+You can use basic [glob syntax](https://en.wikipedia.org/wiki/Glob_(programming))
+(only `*` and `?` are supported)
+
 ## How to install
 
 Simply drop the jar in `$KEYCLOAK_HOME\standalone\deployments`, it will be automatically deployed by keycloak.

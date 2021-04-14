@@ -1,16 +1,19 @@
 package net.micedre.keycloak.registration;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 import javax.ws.rs.core.MultivaluedMap;
 
 import org.keycloak.authentication.FormAction;
+import org.keycloak.authentication.FormContext;
 import org.keycloak.authentication.ValidationContext;
 import org.keycloak.authentication.forms.RegistrationPage;
 import org.keycloak.authentication.forms.RegistrationProfile;
 import org.keycloak.events.Details;
 import org.keycloak.events.Errors;
+import org.keycloak.forms.login.LoginFormsProvider;
 import org.keycloak.models.AuthenticatorConfigModel;
 import org.keycloak.models.utils.FormMessage;
 import org.keycloak.provider.ProviderConfigProperty;
@@ -55,6 +58,7 @@ public class RegistrationProfileWithMailDomainCheck extends RegistrationProfile 
       CONFIG_PROPERTIES.add(property);
    }
 
+   
    private static final boolean globmatches(String text, String glob) {
       if (text.length() > 200) {
          return false;
@@ -134,6 +138,14 @@ public class RegistrationProfileWithMailDomainCheck extends RegistrationProfile 
          context.success();
       }
 
+   }
+
+
+   @Override
+   public void buildPage(FormContext context, LoginFormsProvider form) {
+      List<String> authorizedMailDomains = Arrays.asList(
+         context.getAuthenticatorConfig().getConfig().getOrDefault("validDomains","exemple.org").split("##"));
+      form.setAttribute("authorizedMailDomains", authorizedMailDomains);
    }
 
 }

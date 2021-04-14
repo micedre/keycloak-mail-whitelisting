@@ -17,3 +17,15 @@ Simply drop the jar in `$KEYCLOAK_HOME\standalone\deployments`, it will be autom
 - Configure this new execution (otherwise, keycloak will only accept "exemple.org" domains)
 - Change the registration binding to this new flow
 - Configure the realm to accept registration and verify email (this is important!)
+
+##  Display authorized mail domains in register forms
+
+This extension provides the list of authorized patterns in the `authorizedMailDomains` attribute of the registration page.
+
+This can be used like this : 
+
+```
+ <div class="${properties.kcLabelWrapperClass!}">
+                    <label for="email" class="${properties.kcLabelClass!}">${msg("email")} (only ${authorizedMailDomains?join(", ")})</label>
+ </div>
+```

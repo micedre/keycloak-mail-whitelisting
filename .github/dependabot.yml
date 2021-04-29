@@ -1,0 +1,20 @@
+version: 2
+updates:
+- package-ecosystem: maven
+  directory: "/"
+  schedule:
+    interval: weekly
+  open-pull-requests-limit: 10
+  ignore:
+  - dependency-name: org.keycloak:keycloak-core
+    versions:
+    - "> 9.0.3"
+  - dependency-name: org.keycloak:keycloak-server-spi
+    versions:
+    - "> 9.0.3"
+  - dependency-name: org.keycloak:keycloak-server-spi-private
+    versions:
+    - "> 9.0.3"
+  - dependency-name: org.keycloak:keycloak-services
+    versions:
+    - "> 9.0.3"

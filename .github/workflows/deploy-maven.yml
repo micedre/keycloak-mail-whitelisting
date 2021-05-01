@@ -31,7 +31,7 @@ jobs:
             --batch-mode \
             -Dgpg.passphrase=${{ secrets.OSSRH_GPG_KEY_PASSWORD }} \
             clean deploy
-      - id: push new version
+      - id: push-new-version
         name: push new version 
         run: |
           git clone https://${{ github.actor }}:${{ secrets.GITHUB_TOKEN }}@github.com/${{github.repository}}.git

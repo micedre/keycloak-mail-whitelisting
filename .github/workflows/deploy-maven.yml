@@ -31,3 +31,13 @@ jobs:
             --batch-mode \
             -Dgpg.passphrase=${{ secrets.OSSRH_GPG_KEY_PASSWORD }} \
             clean deploy
+      - id: push new version
+        name: push new version 
+        run: |
+          git clone https://${{ github.actor }}:${{ secrets.GITHUB_TOKEN }}@github.com/${{github.repository}}.git
+          cd keycloak-mail-whitelisting
+          git config --local user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git config --local user.name "github-actions[bot]"
+          mvn -B versions:set -DnextSnapshot -DgenerateBackupPoms=false
+          git commit -a -m"Prepare new version"
+          git push

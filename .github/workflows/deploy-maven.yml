@@ -17,8 +17,8 @@ jobs:
       - id: install-secret-key
         name: Install gpg secret key
         run: |
-         cat <(echo -e "${{ secrets.OSSRH_GPG_KEY }}") | gpg --batch --import
-         gpg --list-secret-keys --keyid-format LONG
+          cat <(echo -e "${{ secrets.OSSRH_GPG_KEY }}") | gpg --batch --import
+          gpg --list-secret-keys --keyid-format LONG
       - id: publish-to-central
         name: Publish to Central Repository
         env:
@@ -30,9 +30,10 @@ jobs:
             --no-transfer-progress \
             --batch-mode \
             -Dgpg.passphrase=${{ secrets.OSSRH_GPG_KEY_PASSWORD }} \
+            - P ossrh \
             clean deploy
       - id: push-new-version
-        name: push new version 
+        name: push new version
         run: |
           git clone https://${{ github.actor }}:${{ secrets.GITHUB_TOKEN }}@github.com/${{github.repository}}.git
           cd keycloak-mail-whitelisting

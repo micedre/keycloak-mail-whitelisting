@@ -7,13 +7,22 @@ You can use basic [glob syntax](https://en.wikipedia.org/wiki/Glob_(programming)
 
 ## How to install
 
-Simply drop the jar in `$KEYCLOAK_HOME\standalone\deployments`, it will be automatically deployed by keycloak.
+Simply drop the `jar` in the plugin directory, it will be automatically deployed by keycloak.
+
+### Keycloak < 17
+
+The plugin directory is `$KEYCLOAK_HOME\standalone\deployments`.
+
+### Keycloak >= 17
+
+The plugin directory is `$KEYCLOAK_HOME\providers`.
 
 ## How to use
 
 - Go to the admin console, in authentication menu. 
 - Copy the registration flow
 - add a new execution below "Profile Validation" and choose "Profile Validation With Email Domain Check"
+- Set the execution "Required"
 - Configure this new execution (otherwise, keycloak will only accept "exemple.org" domains)
 - Change the registration binding to this new flow
 - Configure the realm to accept registration and verify email (this is important!)

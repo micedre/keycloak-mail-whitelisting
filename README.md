@@ -9,11 +9,11 @@ You can use basic [glob syntax](https://en.wikipedia.org/wiki/Glob_(programming)
 
 Simply drop the `jar` in the plugin directory, it will be automatically deployed by keycloak.
 
-### Keycloak < 17
+### Wildfly distribution (default until keycloak 16)
 
 The plugin directory is `$KEYCLOAK_HOME\standalone\deployments`.
 
-### Keycloak >= 17
+### Quarkus distribution (default since keycloak 17)
 
 The plugin directory is `$KEYCLOAK_HOME\providers`.
 

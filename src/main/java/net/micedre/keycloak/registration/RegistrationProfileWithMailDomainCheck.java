@@ -117,7 +117,7 @@ public class RegistrationProfileWithMailDomainCheck extends RegistrationProfile 
 
       String[] domains = mailDomainConfig.getConfig().getOrDefault("validDomains","exemple.org").split("##");
       for (String domain : domains) {
-         if (email.endsWith("@" + domain)) {
+         if (email.endsWith("@" + domain) || email.equals(domain)) {
             emailDomainValid = true;
             break;
          } else if (globmatches(email, "*@" + domain)) {

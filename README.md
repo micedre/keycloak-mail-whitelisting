@@ -7,6 +7,8 @@ You can use basic [glob syntax](https://en.wikipedia.org/wiki/Glob_(programming)
 
 ## How to install
 
+The jar are deployed to Maven Central Repository here : https://repo1.maven.org/maven2/net/micedre/keycloak/keycloak-mail-whitelisting/
+
 Simply drop the `jar` in the plugin directory, it will be automatically deployed by keycloak.
 
 ### Wildfly distribution (default until keycloak 16)

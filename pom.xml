@@ -32,7 +32,7 @@
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     <maven.compiler.source>1.8</maven.compiler.source>
     <maven.compiler.target>1.8</maven.compiler.target>
-    <keycloak.version>9.0.3</keycloak.version>
+    <keycloak.version>19.0.0</keycloak.version>
   </properties>
 
   <dependencies>

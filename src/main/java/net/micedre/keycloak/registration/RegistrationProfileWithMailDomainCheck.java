@@ -53,8 +53,8 @@ public class RegistrationProfileWithMailDomainCheck extends RegistrationProfile 
       property = new ProviderConfigProperty();
       property.setName("validDomains");
       property.setLabel("Valid domain for emails");
-      property.setType(ProviderConfigProperty.MULTIVALUED_STRING_TYPE);
-      property.setHelpText("List mail domains authorized to register");
+      property.setType(ProviderConfigProperty.STRING_TYPE);
+      property.setHelpText("List mail domains authorized to register, separated by '##'");
       CONFIG_PROPERTIES.add(property);
    }
 
@@ -114,8 +114,8 @@ public class RegistrationProfileWithMailDomainCheck extends RegistrationProfile 
          context.validationError(formData, errors);
          return;
       }
-
-      String[] domains = mailDomainConfig.getConfig().getOrDefault("validDomains","exemple.org").split("##");
+      
+      String[] domains = mailDomainConfig.getConfig().getOrDefault("validDomains", "example.com").split("##");
       for (String domain : domains) {
          if (email.endsWith("@" + domain) || email.equals(domain)) {
             emailDomainValid = true;
@@ -147,5 +147,6 @@ public class RegistrationProfileWithMailDomainCheck extends RegistrationProfile 
          context.getAuthenticatorConfig().getConfig().getOrDefault("validDomains","exemple.org").split("##"));
       form.setAttribute("authorizedMailDomains", authorizedMailDomains);
    }
+
 
 }

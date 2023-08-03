@@ -2,7 +2,7 @@
   <modelVersion>4.0.0</modelVersion>
   <groupId>net.micedre.keycloak</groupId>
   <artifactId>keycloak-mail-whitelisting</artifactId>
-  <version>1.7-SNAPSHOT</version>
+  <version>1.8-SNAPSHOT</version>
 
   <name>Keycloak mail whitelisting extension</name>
   <description>A keycloak extension to block non authorized domain to register</description>
@@ -30,9 +30,9 @@
 
   <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-    <maven.compiler.source>1.8</maven.compiler.source>
-    <maven.compiler.target>1.8</maven.compiler.target>
-    <keycloak.version>19.0.0</keycloak.version>
+    <maven.compiler.source>17</maven.compiler.source>
+    <maven.compiler.target>17</maven.compiler.target>
+    <keycloak.version>22.0.0</keycloak.version>
   </properties>
 
   <dependencies>

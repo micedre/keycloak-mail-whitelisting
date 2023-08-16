@@ -1,1 +1,2 @@
 net.micedre.keycloak.registration.RegistrationProfileWithMailDomainCheck
+net.micedre.keycloak.registration.RegistrationProfileWithDomainBlock

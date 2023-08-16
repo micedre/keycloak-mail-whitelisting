@@ -1,6 +1,6 @@
-# Keycloak - Whitelist email domain for registration
+# Keycloak - Email domain validation for registration
 
-This extension allows you to validate email domain used for registration in keycloak to accept only a finite list of domain.
+This extension allows you to validate email domain used for registration in keycloak to accept or deny a finite list of domain.
 
 You can use basic [glob syntax](https://en.wikipedia.org/wiki/Glob_(programming))
 (only `*` and `?` are supported)
@@ -23,15 +23,15 @@ The plugin directory is `$KEYCLOAK_HOME\providers`.
 
 - Go to the admin console, in authentication menu. 
 - Copy the registration flow
-- add a new execution below "Profile Validation" and choose "Profile Validation With Email Domain Check"
+- add a new execution below "Profile Validation" and choose "Profile Validation With Email Domain Check" or "Profile Validation with domain block"
 - Set the execution "Required"
-- Configure this new execution (otherwise, keycloak will only accept "exemple.org" domains)
+- Configure this new execution with the allowed or blocked domains, otherwise, keycloak will only accept or block "exemple.org" domains
 - Change the registration binding to this new flow
 - Configure the realm to accept registration and verify email (this is important!)
 
-##  Display authorized mail domains in register forms
+##  Display mail domains in register forms
 
-This extension provides the list of authorized patterns in the `authorizedMailDomains` attribute of the registration page.
+This extension provides the list of authorized patterns in the `authorizedMailDomains` and `unauthorizedMailDomains` attribute of the registration page.
 
 This can be used like this : 
 

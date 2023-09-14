@@ -3,6 +3,7 @@ package net.micedre.keycloak.registration;
 import org.keycloak.authentication.FormContext;
 import org.keycloak.forms.login.LoginFormsProvider;
 import org.keycloak.provider.ProviderConfigProperty;
+import org.keycloak.models.AuthenticatorConfigModel;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -14,9 +15,9 @@ public class RegistrationProfileWithMailDomainCheck extends RegistrationProfileD
 
    private static final List<ProviderConfigProperty> CONFIG_PROPERTIES = new ArrayList<>();
 
-   static {
-      domainListConfigName = "validDomains";
+   public static String domainListConfigName = "validDomains";
 
+   static {
       ProviderConfigProperty property;
       property = new ProviderConfigProperty();
       property.setName(domainListConfigName);
@@ -51,6 +52,11 @@ public class RegistrationProfileWithMailDomainCheck extends RegistrationProfileD
       List<String> authorizedMailDomains = Arrays.asList(
          context.getAuthenticatorConfig().getConfig().getOrDefault(domainListConfigName,DEFAULT_DOMAIN_LIST).split(DOMAIN_LIST_SEPARATOR));
       form.setAttribute("authorizedMailDomains", authorizedMailDomains);
+   }
+
+   @Override
+   public String[] getDomainList(AuthenticatorConfigModel mailDomainConfig) {
+      return mailDomainConfig.getConfig().getOrDefault(domainListConfigName, DEFAULT_DOMAIN_LIST).split(DOMAIN_LIST_SEPARATOR);
    }
 
    @Override

@@ -1,5 +1,6 @@
 package net.micedre.keycloak.registration;
 
+import org.jboss.logging.Logger;
 import org.keycloak.authentication.FormAction;
 import org.keycloak.authentication.ValidationContext;
 import org.keycloak.authentication.forms.RegistrationPage;
@@ -11,18 +12,18 @@ import org.keycloak.models.utils.FormMessage;
 import org.keycloak.services.messages.Messages;
 import org.keycloak.services.validation.Validation;
 
-import javax.ws.rs.core.MultivaluedMap;
+import jakarta.ws.rs.core.MultivaluedMap;
 import java.util.ArrayList;
 import java.util.List;
 
 public abstract class RegistrationProfileDomainValidation extends RegistrationProfile implements FormAction {
+   protected static final Logger logger = Logger.getLogger(RegistrationProfileDomainValidation.class);
 
-   protected static String domainListConfigName;
    protected static final String DEFAULT_DOMAIN_LIST = "example.org";
    protected static final String DOMAIN_LIST_SEPARATOR = "##";
 
    @Override
-    public boolean isConfigurable() {
+   public boolean isConfigurable() {
         return true;
    }
 
@@ -76,7 +77,8 @@ public abstract class RegistrationProfileDomainValidation extends RegistrationPr
          return;
       }
 
-      String[] domainList = mailDomainConfig.getConfig().getOrDefault(domainListConfigName, DEFAULT_DOMAIN_LIST).split(DOMAIN_LIST_SEPARATOR);
+      String[] domainList = getDomainList(mailDomainConfig);
+
       boolean emailDomainValid = isEmailValid(email, domainList);
 
       if (!emailDomainValid) {
@@ -90,6 +92,8 @@ public abstract class RegistrationProfileDomainValidation extends RegistrationPr
          context.success();
       }
    }
+
+   public abstract String[] getDomainList(AuthenticatorConfigModel mailDomainConfig);
 
    public abstract boolean isEmailValid(String email, String[] domains);
 }

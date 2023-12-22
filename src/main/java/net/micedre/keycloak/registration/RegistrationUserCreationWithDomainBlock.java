@@ -9,7 +9,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-public class RegistrationProfileWithDomainBlock extends RegistrationProfileDomainValidation {
+public class RegistrationUserCreationWithDomainBlock extends RegistrationUserCreationDomainValidation {
 
    public static final String PROVIDER_ID = "registration-domain-block-action";
 

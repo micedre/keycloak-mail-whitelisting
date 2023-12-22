@@ -1,2 +1,2 @@
-net.micedre.keycloak.registration.RegistrationProfileWithMailDomainCheck
-net.micedre.keycloak.registration.RegistrationProfileWithDomainBlock
+net.micedre.keycloak.registration.RegistrationUserCreationWithMailDomainCheck
+net.micedre.keycloak.registration.RegistrationUserCreationWithDomainBlock

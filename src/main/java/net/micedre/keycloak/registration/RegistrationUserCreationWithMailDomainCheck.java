@@ -9,7 +9,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-public class RegistrationProfileWithMailDomainCheck extends RegistrationProfileDomainValidation {
+public class RegistrationUserCreationWithMailDomainCheck extends RegistrationUserCreationDomainValidation {
 
    public static final String PROVIDER_ID = "registration-mail-check-action";
 

@@ -2,9 +2,10 @@ package net.micedre.keycloak.registration;
 
 import org.jboss.logging.Logger;
 import org.keycloak.authentication.FormAction;
+import org.keycloak.authentication.FormContext;
 import org.keycloak.authentication.ValidationContext;
 import org.keycloak.authentication.forms.RegistrationPage;
-import org.keycloak.authentication.forms.RegistrationProfile;
+import org.keycloak.authentication.forms.RegistrationUserCreation;
 import org.keycloak.events.Details;
 import org.keycloak.events.Errors;
 import org.keycloak.models.AuthenticatorConfigModel;
@@ -16,8 +17,8 @@ import jakarta.ws.rs.core.MultivaluedMap;
 import java.util.ArrayList;
 import java.util.List;
 
-public abstract class RegistrationProfileDomainValidation extends RegistrationProfile implements FormAction {
-   protected static final Logger logger = Logger.getLogger(RegistrationProfileDomainValidation.class);
+public abstract class RegistrationUserCreationDomainValidation extends RegistrationUserCreation implements FormAction {
+   protected static final Logger logger = Logger.getLogger(RegistrationUserCreationDomainValidation.class);
 
    protected static final String DEFAULT_DOMAIN_LIST = "example.org";
    protected static final String DOMAIN_LIST_SEPARATOR = "##";
@@ -25,6 +26,10 @@ public abstract class RegistrationProfileDomainValidation extends RegistrationPr
    @Override
    public boolean isConfigurable() {
         return true;
+   }
+
+   @Override
+   public void success(FormContext context) {
    }
 
    protected static final boolean globmatches(String text, String glob) {

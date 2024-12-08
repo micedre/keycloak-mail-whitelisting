@@ -22,8 +22,8 @@ public class RegistrationUserCreationWithMailDomainCheck extends RegistrationUse
       property = new ProviderConfigProperty();
       property.setName(domainListConfigName);
       property.setLabel("Valid domains for emails");
-      property.setType(ProviderConfigProperty.STRING_TYPE);
-      property.setHelpText("List mail domains authorized to register, separated by '##'");
+      property.setType(ProviderConfigProperty.TEXT_TYPE);
+      property.setHelpText("List mail domains authorized to register, separated by '##' or new line");
       CONFIG_PROPERTIES.add(property);
    }
 

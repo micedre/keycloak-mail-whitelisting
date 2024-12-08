@@ -22,8 +22,8 @@ public class RegistrationUserCreationWithDomainBlock extends RegistrationUserCre
       property = new ProviderConfigProperty();
       property.setName(domainListConfigName);
       property.setLabel("Invalid domain for emails");
-      property.setType(ProviderConfigProperty.STRING_TYPE);
-      property.setHelpText("List mail domains not authorized to register, separated by '##'");
+      property.setType(ProviderConfigProperty.TEXT_TYPE);
+      property.setHelpText("List mail domains not authorized to register, separated by '##' or new line");
       CONFIG_PROPERTIES.add(property);
    }
 

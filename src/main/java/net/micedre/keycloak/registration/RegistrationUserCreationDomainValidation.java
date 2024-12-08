@@ -21,7 +21,7 @@ public abstract class RegistrationUserCreationDomainValidation extends Registrat
    protected static final Logger logger = Logger.getLogger(RegistrationUserCreationDomainValidation.class);
 
    protected static final String DEFAULT_DOMAIN_LIST = "example.org";
-   protected static final String DOMAIN_LIST_SEPARATOR = "##";
+   protected static final String DOMAIN_LIST_SEPARATOR = "(?:\\r\\n|\\r|\\n|##)";
 
    @Override
    public boolean isConfigurable() {
